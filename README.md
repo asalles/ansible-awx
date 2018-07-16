@@ -11,6 +11,55 @@ To learn more about using AWX, and Tower, view the [Tower docs site](http://docs
 
 The AWX Project Frequently Asked Questions can be found [here](https://www.ansible.com/awx-project-faq).
 
+UPDATE ASALLES
+------
+basado en http://khmel.org/?p=1245
+
+- PREPARACIÓN con pasos corregidos (en maquina base AWX)
+```
+yum -y install epel-release
+yum -y install git gettext ansible docker nodejs npm gcc-c++ bzip2 python-docker-py
+```
+- Firewall
+```
+firewall-cmd --add-port=80/tcp --permanent
+firewall-cmd --reload
+```
+
+- Start and enable docker service
+```
+systemctl start docker
+systemctl enable docker
+```
+
+- INSTALACIÓN con pasos corregidos (en maquina de control)
+```
+# ejecutar git clone
+git clone https://github.com/asalles/awx
+
+## FIX postgres_data_dir
+## sed -i 's;postgres_data_dir=/tmp/pgdocker;postgres_data_dir=/root/pgdocker;'  awx/installer/inventory
+## fixed en https://github.com/asalles/awx
+
+#editar inventory
+cd awx/installer/
+HOST=10.199.101.55
+sed -e  "s/localhost ansible_connection=local /$HOST /g"   inventory
+
+# ejecutar instalación
+ansible-playbook -i inventory install.yml
+```
+
+- COMPROBACIÓN desde maquina base AWX
+```
+docker logs -f awx_task
+```
+Now you can access AWX web server http://$HOST, admin/password
+
+
+
+------------------------------------
+
 Contributing
 ------------
 
