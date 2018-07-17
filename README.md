@@ -33,7 +33,7 @@ ansible-playbook -i inventory install.yml
 ```
 docker logs -f awx_task
 ```
-- Now you can access AWX web server http://${ ansible_host } with admin/password as credentials.
+- Now you can access AWX web server http://${ ansible_host } (admin/password as default).
 
 
 ------------------------------------
