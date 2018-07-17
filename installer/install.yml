@@ -3,6 +3,7 @@
   hosts: awx
   gather_facts: false
   roles:
+    - { role: pre-req }
     - { role: check_vars }
     - { role: image_build, when: "dockerhub_base is not defined" }
     - { role: image_push, when: "docker_registry is defined and dockerhub_base is not defined" }
