@@ -1,9 +1,13 @@
 [awx]
-nodo56       ansible_host=10.199.101.56  ansible_python_interpreter="/usr/bin/env python"
-
-#localhost   ansible_python_interpreter="/usr/bin/env python" ansible_connection=local
+nodo102       ansible_host=10.199.101.102  
+#localhost    ansible_connection=local
 
 [all:vars]
+
+# AUTENTICACION
+ansible_ssh_user=root
+ansible_ssh_pass=Cautiva34125.1d12.dFASF1230
+ansible_python_interpreter="/usr/bin/env python"
 
 # Remove these lines if you want to run a local image build
 # Otherwise the setup playbook will install the official Ansible images. Versions may
