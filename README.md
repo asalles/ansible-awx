@@ -11,7 +11,7 @@ To learn more about using AWX, and Tower, view the [Tower docs site](http://docs
 
 The AWX Project Frequently Asked Questions can be found [here](https://www.ansible.com/awx-project-faq).
 
-UPDATE ASALLES
+HOW TO USE
 ------
 basado en http://khmel.org/?p=1245
 
