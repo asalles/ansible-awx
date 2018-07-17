@@ -1,6 +1,6 @@
 ---
 - name: Build and deploy AWX
-  hosts: all
+  hosts: awx
   gather_facts: false
   roles:
     - { role: check_vars }
