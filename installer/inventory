@@ -1,6 +1,7 @@
 [awx]
-10.199.101.56      ansible_python_interpreter="/usr/bin/env python"
-#localhost         ansible_python_interpreter="/usr/bin/env python" ansible_connection=local
+nodo56       ansible_host=10.199.101.56  ansible_python_interpreter="/usr/bin/env python"
+
+#localhost   ansible_python_interpreter="/usr/bin/env python" ansible_connection=local
 
 [all:vars]
 
