@@ -23,3 +23,6 @@
 
    - name: Firewall settings 80
      firewalld: zone=public port=80/tcp permanent=true state=enabled
+  
+   - name: FIX postgres_data_dir
+     file: path=/root/pgdocker state=directory
