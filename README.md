@@ -11,52 +11,31 @@ To learn more about using AWX, and Tower, view the [Tower docs site](http://docs
 
 The AWX Project Frequently Asked Questions can be found [here](https://www.ansible.com/awx-project-faq).
 
-HOW TO USE
+Install
 ==========
+- Clone repo
+```
+git clone https://github.com/asalles/ansible-awx
+```
+- Edit [awx] section in ansible-awx/installer/inventory, adding the AWX-host, login/pass and default_admin_user and default_admin_password variables.
 
-En máquina AWX destino
---------------
-- Instalación de pre-requisitos de software
+```
+cd ansible-awx/installer/
+vi inventory ...
+```
+- Copy ssh-keys between control and AWX-host.
 
+- Go ahead!
 ```
-yum -y install epel-release
-yum -y install git gettext ansible docker nodejs npm gcc-c++ bzip2 python-docker-py
-```
-- Configuración de Firewall
-```
-firewall-cmd --add-port=80/tcp --permanent
-firewall-cmd --reload
-```
-
-- Configuración Docker
-```
-systemctl start docker
-systemctl enable docker
+ansible-playbook -i inventory install.yml 
 ```
 
-En máquina de control
---------------
-- Clon de repositorio y ejecución
-```
-# ejecutar git clone
-git clone https://github.com/asalles/awx
+- See logs for avoid errors in AWX-host.
 
-#editar inventory
-HOST=10.199.101.55
-cd awx/installer
-sed -e  "s/localhost ansible_connection=local /$HOST /g"   inventory
-
-# ejecutar instalación
-ansible-playbook -i inventory install.yml
-```
-
-Comprobación en máquina AWX destino
------------
 ```
 docker logs -f awx_task
 ```
-Now you can access AWX web server http://$HOST, admin/password
-
+- Now you can access AWX web server http://${ ansible_host } with admin/password as credentials.
 
 
 ------------------------------------
