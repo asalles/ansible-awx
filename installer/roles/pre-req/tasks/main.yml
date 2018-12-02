@@ -1,8 +1,12 @@
 ---
-- name: Install dependeces AWX
+- name: Install EPEL
   yum: name={{item}} state=present disable_gpg_check=yes
   with_items:
    - epel-release
+
+- name: Install dependeces AWX
+  yum: name={{item}} state=present disable_gpg_check=yes
+  with_items:
    - git
    - gettext
    - ansible
