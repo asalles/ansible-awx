@@ -16,6 +16,7 @@
    - gcc-c++
    - bzip2
    - python-docker-py
+   - firewalld
 
 - name: Enable docker to be started at boot
   service: name=docker.service enabled=yes state=started
